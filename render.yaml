@@ -2,14 +2,10 @@ services:
   - type: web
     name: netease-music-toolbox
     runtime: python
-    plan: starter
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn --bind 0.0.0.0:${PORT:-10000} --workers 1 --threads 4 main:app
     healthCheckPath: /health
-    disk:
-      name: music-data
-      mountPath: /opt/render/project/src
-      sizeGB: 1
     envVars:
       - key: PUBLIC_DEPLOYMENT
         value: "1"
