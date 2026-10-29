@@ -261,7 +261,9 @@ def before_request():
     """公网部署必须使用 HTTP Basic Auth 保护所有功能。"""
     username = os.environ.get('APP_USERNAME', '')
     password = os.environ.get('APP_PASSWORD', '')
-    if not username or not password:
+    if os.environ.get('PUBLIC_DEPLOYMENT') == '1' and request.path == '/health':
+        pass
+    elif not username or not password:
         if os.environ.get('PUBLIC_DEPLOYMENT') == '1':
             return Response('Public deployment credentials are not configured.', status=503)
     else:
@@ -320,6 +322,9 @@ def health_check():
         # 检查 Cookie 状态：直接读 cookie.txt
         cookies = load_cookies()
         cookie_status = 'valid' if cookies else 'invalid'
+
+        if os.environ.get('PUBLIC_DEPLOYMENT') == '1':
+            return APIResponse.success({'service': 'running'}, "API服务运行正常")
 
         health_info = {
             'service': 'running',
