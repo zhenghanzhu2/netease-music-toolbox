@@ -1,0 +1,10 @@
+.env
+cookie.txt
+cookie.*.txt
+*.log
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+downloads/
+.DS_Store
