@@ -20,37 +20,39 @@
         }
         button,input,select,textarea { font:inherit; }
         body > .container {
-            display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:16px 22px;
-            width:100%; max-width:1120px; margin:0 auto; padding:26px 28px 32px;
+            display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:22px 24px;
+            width:100%; max-width:1120px; margin:0 auto; padding:36px 28px 40px;
             align-content:start;
         }
         .brand-lockup {
-            grid-column:1/-1; display:flex; align-items:center; justify-content:flex-start;
-            gap:22px; margin:0!important; padding:0 0 2px; align-items:flex-start;
+            grid-column:1/-1; display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+            align-items:start; gap:18px; margin:0!important; padding:8px 0 6px; min-height:118px;
         }
+        .brand-left { display:flex; align-items:center; justify-self:start; gap:12px; min-width:0; }
         .brand-logo-frame {
             flex:0 0 auto; width:164px; overflow:hidden; border-radius:14px;
-            background:#fff; border:1px solid #e3efec; box-shadow:0 5px 16px #2e8d7d0d; margin-top:2px;
+            background:#fff; border:1px solid #e3efec; box-shadow:0 5px 16px #2e8d7d0d;
         }
         .brand-logo { display:block; width:100%; height:auto; }
-        .brand-copy { display:flex; flex-direction:column; align-items:flex-start; gap:7px; min-width:0; }
-        .brand-title-row { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }
+        .brand-copy { grid-column:2; grid-row:1; display:flex; flex-direction:column; align-items:center; gap:9px; min-width:0; text-align:center; }
+        .brand-title-row { display:flex; align-items:center; justify-content:center; }
         .brand-copy h1 {
-            margin:0!important; color:var(--ink); font-size:27px; font-weight:680;
-            letter-spacing:0; line-height:1.25;
+            margin:0!important; color:var(--ink); font-size:30px; font-weight:680;
+            letter-spacing:0; line-height:1.25; white-space:nowrap;
         }
         .brand-tag {
-            display:inline-flex; align-items:center; gap:7px; padding:5px 10px;
+            display:inline-flex; align-items:center; gap:7px; padding:6px 10px;
             border:1px solid #cce9e2; border-radius:999px; color:#33877b;
             background:#edf8f5; font-size:12px; font-weight:600; letter-spacing:.01em;
+            white-space:nowrap;
         }
         .brand-tag:before { content:""; width:6px; height:6px; border-radius:50%; background:#58bfae; }
-        .brand-subtitle { margin:0!important; color:var(--muted); font-size:14px; line-height:1.5; }
+        .brand-subtitle { margin:0!important; color:var(--muted); font-size:15px; line-height:1.5; text-align:center; }
         body > .container > .card { min-width:0; margin:0!important; border:1px solid #e8f0ed; border-radius:16px; background:var(--paper); box-shadow:0 8px 24px #1c66560a!important; overflow:hidden; }
         body > .container > .card.shadow-sm { grid-column:1; }
         body > .container > .card.mt-3 { grid-column:2; align-self:stretch; display:flex; align-items:center; }
-        body > .container > .card.mt-3 > .card-body { width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:24px 20px; }
-        #main-form .card-body { padding:24px 26px; }
+        body > .container > .card.mt-3 > .card-body { width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 24px; min-height:402px; }
+        #main-form .card-body { min-height:402px; padding:34px 34px; display:flex; align-items:center; }\n        #main-form { width:100%; }
         #main-form .mb-3 { margin-bottom:16px!important; }
         .form-label { display:block; color:#4e6c65; font-size:13px; font-weight:600; margin-bottom:7px; }
         .form-control,.form-select {
@@ -72,7 +74,7 @@
         .btn-primary:hover,.btn-success:hover { color:#fff; background:#278f80; }
         .btn-warning { color:#39776d; background:#eaf6f2; border:1px solid #d2eae3; }
         .btn-info { color:#fff; background:#559f94; border:0; }
-        #main-form .text-center .btn { width:min(100%,240px)!important; margin-top:3px; }
+        #main-form .text-center { text-align:center!important; }\n        #main-form .text-center .btn { width:min(100%,260px)!important; margin:8px auto 0; display:block; }
         #login-start { color:#27877b; border:1px solid #a9d9d0; background:#f4fbf8; }
         #login-start:hover { color:#176e64; background:#e5f5f0; }
         #login-message { max-width:230px; margin:11px auto 2px!important; color:var(--muted); font-size:12px; line-height:1.65; }
@@ -105,10 +107,10 @@
             .brand-logo-frame { width:min(180px,64vw); }
             .brand-copy { align-items:center; gap:6px; }
             .brand-title-row { justify-content:center; gap:8px; }
-            .brand-copy h1 { font-size:clamp(22px,5.6vw,27px); text-align:center; }
+            .brand-copy h1 { font-size:clamp(22px,5.6vw,27px); text-align:center; white-space:normal; }
             .brand-subtitle { text-align:center; }
             body > .container > .card { margin-top:13px!important; }
-            #main-form .card-body { padding:20px 18px; }
+            #main-form .card-body { min-height:0; padding:22px 20px; display:block; }\n            body > .container > .card.mt-3 > .card-body { min-height:220px; padding:24px 20px; }
             #search-area { display:block; }
             #search-area .text-center { text-align:center!important; }
             #main-form .text-center .btn { width:min(100%,280px)!important; }
@@ -127,8 +129,14 @@
 <body>
     <div class="container mt-5">
         <header class="brand-lockup mb-4" aria-label="网易云音乐工具箱，轻松频率内部专用">
-            <div class="brand-logo-frame"><img class="brand-logo" src="/static/qingsong-frequency-logo.png" alt="轻松频率"></div>
-            <div class="brand-copy"><div class="brand-title-row"><h1>网易云音乐工具箱</h1><div class="brand-tag">轻松频率内部专用</div></div><p class="brand-subtitle">搜索、解析与下载，轻松管理你的音乐</p></div>
+            <div class="brand-left">
+                <div class="brand-logo-frame"><img class="brand-logo" src="/static/qingsong-frequency-logo.png" alt="轻松频率"></div>
+                <div class="brand-tag">轻松频率内部专用</div>
+            </div>
+            <div class="brand-copy">
+                <div class="brand-title-row"><h1>网易云音乐工具箱</h1></div>
+                <p class="brand-subtitle">搜索、解析与下载，轻松管理你的音乐</p>
+            </div>
         </header>
         <div class="card shadow-sm">
             <div class="card-body">
