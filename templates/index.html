@@ -8,117 +8,119 @@
     <link rel="stylesheet" href="/static/APlayer.min.css">
     <style>
         :root {
-            --ink:#24413b; --muted:#758b85; --mint:#78d1c2; --mint-strong:#46b7a7;
-            --mint-dark:#237f73; --mint-pale:#e7f6f2; --paper:#fff; --line:#e2eeeb;
+            --ink:#203b36; --muted:#71847f; --mint:#55bfae; --mint-dark:#247f73;
+            --mint-pale:#e9f6f2; --paper:#fff; --line:#e3eeeb;
         }
         * { box-sizing:border-box; }
         body {
             min-height:100vh; color:var(--ink);
-            background:radial-gradient(ellipse at 12% 0%,#dff4ee 0,transparent 36%),linear-gradient(150deg,#f7fbf9,#eff7f4 70%,#f7faf8);
+            background:linear-gradient(145deg,#eff8f5 0%,#f7faf9 42%,#edf6f3 100%);
             font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
-            letter-spacing:.005em;
+            letter-spacing:0;
         }
         button,input,select,textarea { font:inherit; }
         body > .container {
-            display:grid; grid-template-columns:minmax(0,1fr) 320px; gap:18px 24px;
-            width:100%; max-width:1160px; margin:0 auto; padding:42px 28px 36px;
+            display:grid; grid-template-columns:minmax(0,1fr) 300px; gap:16px 22px;
+            width:100%; max-width:1120px; margin:0 auto; padding:26px 28px 32px;
             align-content:start;
         }
         .brand-lockup {
             grid-column:1/-1; display:flex; align-items:center; justify-content:flex-start;
-            gap:28px; margin:0!important; padding:8px 0 0;
+            gap:22px; margin:0!important; padding:0 0 2px;
         }
         .brand-logo-frame {
-            flex:0 0 auto; width:210px; overflow:hidden; border-radius:16px;
-            background:#fff; border:1px solid #e2efeb; box-shadow:0 8px 24px #2e8d7d12;
+            flex:0 0 auto; width:164px; overflow:hidden; border-radius:14px;
+            background:#fff; border:1px solid #e3efec; box-shadow:0 5px 16px #2e8d7d0d;
         }
         .brand-logo { display:block; width:100%; height:auto; }
-        .brand-copy { display:flex; flex-direction:column; align-items:flex-start; gap:9px; }
+        .brand-copy { display:flex; flex-direction:column; align-items:flex-start; gap:7px; min-width:0; }
+        .brand-title-row { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }
         .brand-copy h1 {
-            margin:0!important; color:var(--ink); font-size:32px; font-weight:720;
-            letter-spacing:.01em; line-height:1.2;
+            margin:0!important; color:var(--ink); font-size:27px; font-weight:680;
+            letter-spacing:0; line-height:1.25;
         }
         .brand-tag {
-            display:inline-flex; align-items:center; gap:8px; padding:6px 11px;
-            border:1px solid #cce9e2; border-radius:999px; color:#338f82;
-            background:#eaf7f3; font-size:12px; font-weight:650; letter-spacing:.04em;
+            display:inline-flex; align-items:center; gap:7px; padding:5px 10px;
+            border:1px solid #cce9e2; border-radius:999px; color:#33877b;
+            background:#edf8f5; font-size:12px; font-weight:600; letter-spacing:.01em;
         }
-        .brand-tag:before { content:""; width:7px; height:7px; border-radius:50%; background:#62c7b7; box-shadow:0 0 0 3px #d5f0ea; }
-        .tagline { grid-column:1/-1; margin:0!important; color:var(--muted); font-size:15px; }
-        body > .container > .card { min-width:0; margin:0!important; border:1px solid #fff; border-radius:20px; background:var(--paper); box-shadow:0 12px 38px #1c66560d!important; overflow:hidden; }
+        .brand-tag:before { content:""; width:6px; height:6px; border-radius:50%; background:#58bfae; }
+        .brand-subtitle { margin:0!important; color:var(--muted); font-size:14px; line-height:1.5; }
+        body > .container > .card { min-width:0; margin:0!important; border:1px solid #e8f0ed; border-radius:16px; background:var(--paper); box-shadow:0 8px 24px #1c66560a!important; overflow:hidden; }
         body > .container > .card.shadow-sm { grid-column:1; }
         body > .container > .card.mt-3 { grid-column:2; align-self:stretch; display:flex; align-items:center; }
-        body > .container > .card.mt-3 > .card-body { width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-        #main-form .card-body { padding:28px 30px; }
-        #main-form .mb-3 { margin-bottom:18px!important; }
-        .form-label { display:block; color:#55746c; font-size:13px; font-weight:650; margin-bottom:8px; }
+        body > .container > .card.mt-3 > .card-body { width:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:24px 20px; }
+        #main-form .card-body { padding:24px 26px; }
+        #main-form .mb-3 { margin-bottom:16px!important; }
+        .form-label { display:block; color:#4e6c65; font-size:13px; font-weight:600; margin-bottom:7px; }
         .form-control,.form-select {
-            min-height:48px; border:1px solid #dcebe7; border-radius:11px;
+            min-height:45px; border:1px solid #dce8e4; border-radius:9px;
             color:var(--ink); background-color:#fff; box-shadow:none;
         }
-        .form-control::placeholder { color:#a3b3af; }
-        .form-control:focus,.form-select:focus { border-color:#72cdbd; box-shadow:0 0 0 4px #45ad9d20; }
-        #search-area { display:grid; grid-template-columns:minmax(0,1fr) 132px; gap:0 16px; align-items:end; }
+        .form-control::placeholder { color:#9aa9a5; }
+        .form-control:focus,.form-select:focus { border-color:#72c7b8; box-shadow:0 0 0 3px #45ad9d1a; }
+        #search-area { display:grid; grid-template-columns:minmax(0,1fr) 120px; gap:0 14px; align-items:end; }
         #search-area .text-center { grid-column:1/-1; text-align:left!important; }
         .btn {
-            min-height:44px; padding:10px 20px; border-radius:11px; font-weight:650;
+            min-height:42px; padding:9px 18px; border-radius:9px; font-weight:600;
             transition:transform .16s,box-shadow .16s,background-color .16s;
         }
         .btn:hover { transform:translateY(-1px); }
         .btn-primary,.btn-success {
-            color:#fff; background:linear-gradient(135deg,#54c3b2,#238f81);
-            border:0; box-shadow:0 6px 14px #238f811b;
+            color:#fff; background:#35a997; border:0; box-shadow:0 4px 10px #238f8117;
         }
-        .btn-primary:hover,.btn-success:hover { color:#fff; background:linear-gradient(135deg,#3eaf9f,#197b6f); }
-        .btn-warning { color:#39776d; background:#e9f6f2; border:1px solid #d2ebe4; }
+        .btn-primary:hover,.btn-success:hover { color:#fff; background:#278f80; }
+        .btn-warning { color:#39776d; background:#eaf6f2; border:1px solid #d2eae3; }
         .btn-info { color:#fff; background:#559f94; border:0; }
-        #main-form .text-center .btn { width:min(100%,260px)!important; margin-top:4px; }
-        #login-start { color:#278f82; border:1px solid #a9ddd3; background:#f3fbf8; }
-        #login-start:hover { color:#176e64; background:#e5f6f1; }
-        #login-message { max-width:245px; margin:13px auto 4px!important; color:var(--muted); font-size:13px; line-height:1.7; }
-        #login-qr { padding:10px; border:1px solid var(--line); border-radius:15px; margin-top:16px; }
+        #main-form .text-center .btn { width:min(100%,240px)!important; margin-top:3px; }
+        #login-start { color:#27877b; border:1px solid #a9d9d0; background:#f4fbf8; }
+        #login-start:hover { color:#176e64; background:#e5f5f0; }
+        #login-message { max-width:230px; margin:11px auto 2px!important; color:var(--muted); font-size:12px; line-height:1.65; }
+        #login-qr { padding:9px; border:1px solid var(--line); border-radius:12px; margin-top:14px; }
         body > .container > #search-result, body > .container > #song-info,
         body > .container > #playlist-result, body > .container > #album-result {
-            grid-column:1/-1; min-width:0; width:100%; margin-top:4px!important;
+            grid-column:1/-1; min-width:0; width:100%; margin-top:2px!important;
         }
-        #search-result h5 { color:#2c766b; font-size:18px; font-weight:700; margin:8px 0 13px; }
-        .list-group { border:1px solid var(--line); border-radius:15px; overflow:hidden; box-shadow:0 5px 18px #1c66560a; }
-        .list-group-item { min-width:0; padding:13px 16px; border-color:var(--line); background:#fff; }
-        .list-group-item:hover { background:#f4fbf9; }
+        #search-result h5 { color:#2c766b; font-size:16px; font-weight:650; margin:6px 0 11px; }
+        .list-group { border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:0 4px 14px #1c665608; }
+        .list-group-item { min-width:0; padding:12px 14px; border-color:var(--line); background:#fff; }
+        .list-group-item:hover { background:#f5fbf9; }
         .song-title,.playlist-title { display:inline-block; max-width:220px; vertical-align:middle; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
         .list-group-item .select-song { flex-shrink:0; margin-left:10px; }
-        #song-info { border-radius:18px!important; }
+        #song-info { border-radius:15px!important; }
         #song-info img { max-width:100%; border-radius:8px; }
         #song-info .badge.bg-primary,#song-info .badge.bg-success { background:#389f91!important; color:#fff!important; }
         #song-info .badge.bg-secondary,#song-info .badge.bg-dark { background:#e9f3f0!important; color:#49655f!important; }
         #song-info .badge.bg-info { background:#d9f1eb!important; color:#347c72!important; }
         #song-info .badge.bg-warning { background:#f2ebd6!important; color:#6c592d!important; }
         .alert-info { background:#edf8f5; color:#355d55; border-color:#d7eee8; }
-        .lyric-box { max-height:230px; overflow-y:auto; background:#f7fcfa; border:1px solid #e1f1ed; border-radius:12px; padding:14px 17px; font-size:14px; color:#36564f; line-height:1.85; }
-        .progress { height:9px; border-radius:99px; background:#e5f2ef; }
+        .lyric-box { max-height:230px; overflow-y:auto; background:#f7fcfa; border:1px solid #e1f1ed; border-radius:10px; padding:13px 15px; font-size:14px; color:#36564f; line-height:1.8; }
+        .progress { height:8px; border-radius:99px; background:#e5f2ef; }
         .progress-bar { background:linear-gradient(90deg,#46b7a7,#88d8ca); }
         .footer { color:var(--muted)!important; background:transparent!important; border-color:#dcebe7!important; }
         ::selection { color:#184c45; background:#c8eee5; }
         @media(max-width:760px) {
-            body > .container { display:block; width:100%; max-width:100%; padding:30px 18px 28px; }
-            .brand-lockup { flex-direction:column; gap:13px; margin-bottom:16px!important; align-items:center; text-align:center; }
-            .brand-logo-frame { width:min(220px,72vw); }
-            .brand-copy { align-items:center; gap:7px; }
-            .brand-copy h1 { font-size:clamp(23px,6vw,30px); text-align:center; }
-            .tagline { margin-bottom:18px!important; text-align:center; }
-            body > .container > .card { margin-top:14px!important; }
-            #main-form .card-body { padding:22px 20px; }
+            body > .container { display:block; width:100%; max-width:100%; padding:22px 18px 26px; }
+            .brand-lockup { flex-direction:column; gap:11px; margin-bottom:14px!important; align-items:center; text-align:center; }
+            .brand-logo-frame { width:min(180px,64vw); }
+            .brand-copy { align-items:center; gap:6px; }
+            .brand-title-row { justify-content:center; gap:8px; }
+            .brand-copy h1 { font-size:clamp(22px,5.6vw,27px); text-align:center; }
+            .brand-subtitle { text-align:center; }
+            body > .container > .card { margin-top:13px!important; }
+            #main-form .card-body { padding:20px 18px; }
             #search-area { display:block; }
             #search-area .text-center { text-align:center!important; }
-            #main-form .text-center .btn { width:min(100%,300px)!important; }
+            #main-form .text-center .btn { width:min(100%,280px)!important; }
             body > .container > #search-result, body > .container > #song-info,
-            body > .container > #playlist-result, body > .container > #album-result { margin-top:20px!important; }
+            body > .container > #playlist-result, body > .container > #album-result { margin-top:17px!important; }
             .song-title,.playlist-title { max-width:130px; }
         }
         @media(max-width:420px) {
             body > .container { padding-left:13px; padding-right:13px; }
-            #main-form .card-body { padding:19px 16px; }
-            .brand-copy h1 { font-size:23px; }
+            #main-form .card-body { padding:18px 15px; }
+            .brand-copy h1 { font-size:22px; }
+            .brand-tag { font-size:11px; }
         }
     </style>
 </head>
@@ -126,9 +128,8 @@
     <div class="container mt-5">
         <header class="brand-lockup mb-4" aria-label="网易云音乐工具箱，轻松频率内部专用">
             <div class="brand-logo-frame"><img class="brand-logo" src="/static/qingsong-frequency-logo.png" alt="轻松频率"></div>
-            <div class="brand-copy"><h1>网易云音乐工具箱</h1><div class="brand-tag">轻松频率内部专用</div></div>
+            <div class="brand-copy"><div class="brand-title-row"><h1>网易云音乐工具箱</h1><div class="brand-tag">轻松频率内部专用</div></div><p class="brand-subtitle">搜索、解析与下载，轻松管理你的音乐</p></div>
         </header>
-        <p class="text-center mb-4 tagline">搜索、解析与下载，轻松管理你的音乐</p>
         <div class="card shadow-sm">
             <div class="card-body">
                 <form id="main-form">
