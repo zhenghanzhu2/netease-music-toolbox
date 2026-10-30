@@ -29,7 +29,7 @@
             grid-template-rows:auto auto; gap:14px; margin:0!important; padding:0 0 22px;
             min-height:0; border-bottom:1px solid #e3eeeb;
         }
-        .brand-left { grid-column:1; grid-row:1; display:flex; align-items:center; justify-self:start; gap:18px; min-width:0; }
+        .brand-left { grid-column:1; grid-row:1; display:flex; align-items:center; justify-self:start; min-width:0; }
         .brand-logo-frame {
             flex:0 0 auto; width:184px; overflow:hidden; border-radius:0;
             background:transparent; border:0; box-shadow:none;
@@ -42,7 +42,7 @@
             letter-spacing:0; line-height:1.25; white-space:nowrap;
         }
         .brand-tag {
-            display:inline-flex; align-items:center; padding:0; border:0;
+            position:absolute; top:8px; right:0; display:inline-flex; align-items:center; padding:0; border:0;
             border-radius:0; color:#67cabb; background:transparent;
             font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
             font-size:20px; font-weight:400; line-height:1.2; letter-spacing:0;
@@ -128,7 +128,7 @@
             body > .container { padding-left:13px; padding-right:13px; }
             #main-form .card-body { padding:18px 15px; }
             .brand-copy h1 { font-size:22px; }
-            .brand-tag { font-size:11px; }
+            .brand-tag { position:static; font-size:11px; }
         }
     </style>
     <style>
