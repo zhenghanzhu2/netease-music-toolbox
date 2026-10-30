@@ -42,12 +42,12 @@
             letter-spacing:0; line-height:1.25; white-space:nowrap;
         }
         .brand-tag {
-            display:inline-flex; align-items:center; gap:7px; padding:6px 10px;
-            border:1px solid #cce9e2; border-radius:999px; color:#33877b;
-            background:#edf8f5; font-size:12px; font-weight:600; letter-spacing:.01em;
+            display:inline-flex; align-items:center; padding:0; border:0;
+            border-radius:0; color:#33877b; background:transparent;
+            font-size:12px; font-weight:600; letter-spacing:.01em;
             white-space:nowrap;
         }
-        .brand-tag:before { content:""; width:6px; height:6px; border-radius:50%; background:#58bfae; }
+        .brand-tag:before { content:none; }
         .brand-subtitle { margin:0!important; color:var(--muted); font-size:16px; line-height:1.6; text-align:center; }
         body > .container > .card { min-width:0; margin:0!important; border:1px solid #e8f0ed; border-radius:16px; background:var(--paper); box-shadow:0 8px 24px #1c66560a!important; overflow:hidden; }
         body > .container > .card.shadow-sm { grid-column:1; }
