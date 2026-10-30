@@ -77,7 +77,7 @@
         .btn-primary:hover,.btn-success:hover { color:#fff; background:#278f80; }
         .btn-warning { color:#39776d; background:#eaf6f2; border:1px solid #d2eae3; }
         .btn-info { color:#fff; background:#559f94; border:0; }
-        #main-form .text-center { text-align:center!important; }\n        #main-form .text-center .btn { width:min(100%,220px)!important; margin:8px auto 0; display:block; }
+        #main-form .text-center { text-align:center!important; }\n        #main-form .text-center .btn { width:min(100%,180px)!important; margin:8px auto 0; display:block; }
         #login-start { color:#27877b; border:1px solid #a9d9d0; background:#f4fbf8; }
         #login-start:hover { color:#176e64; background:#e5f5f0; }
         #login-message { max-width:230px; margin:11px auto 2px!important; color:var(--muted); font-size:12px; line-height:1.65; }
@@ -116,7 +116,7 @@
             .card.shadow-sm > .card-body { min-height:0; padding:22px 20px; display:block; }\n            body > .container > .card.mt-3 > .card-body { min-height:220px; padding:24px 20px; }
             #search-area { display:grid; grid-template-columns:minmax(0,1fr) 140px; gap:0 16px; align-items:end; }
             #search-area .text-center { grid-column:1/-1; text-align:center!important; }
-            #main-form .text-center .btn { width:min(100%,280px)!important; }
+            #main-form .text-center .btn { width:min(100%,180px)!important; }
             body > .container > #search-result, body > .container > #song-info,
             body > .container > #playlist-result, body > .container > #album-result { margin-top:17px!important; }
             .song-title,.playlist-title { max-width:130px; }
@@ -185,7 +185,7 @@
                             <input type="number" id="search_limit" class="form-control" value="10" min="1" max="50">
                         </div>
                         <div class="text-center">
-                            <button type="button" id="search-btn" class="btn btn-success w-50">搜索</button>
+                            <button type="button" id="search-btn" class="btn btn-success">搜索</button>
                         </div>
                     </div>
                     <div id="parse-area" style="display:none;">
@@ -207,7 +207,7 @@
                             </select>
                         </div>
                         <div class="text-center">
-                            <button type="button" id="parse-btn" class="btn btn-primary w-50">解析</button>
+                            <button type="button" id="parse-btn" class="btn btn-primary">解析</button>
                         </div>
                     </div>
                     <div id="playlist-area" style="display:none;">
@@ -216,7 +216,7 @@
                             <input type="text" id="playlist_id" class="form-control" placeholder="输入歌单ID或网易云歌单链接">
                         </div>
                         <div class="text-center">
-                            <button type="button" id="playlist-btn" class="btn btn-warning w-50">解析歌单</button>
+                            <button type="button" id="playlist-btn" class="btn btn-warning">解析歌单</button>
                         </div>
                     </div>
                     <div id="album-area" style="display:none;">
@@ -225,7 +225,7 @@
                             <input type="text" id="album_id" class="form-control" placeholder="输入专辑ID或网易云专辑链接">
                         </div>
                         <div class="text-center">
-                            <button type="button" id="album-btn" class="btn btn-info w-50">解析专辑</button>
+                            <button type="button" id="album-btn" class="btn btn-info">解析专辑</button>
                         </div>
                     </div>
                     <div id="download-area" style="display:none;">
@@ -247,7 +247,7 @@
                             </select>
                         </div>
                         <div class="text-center">
-                            <button type="button" id="download-btn" class="btn btn-success w-50">下载音乐</button>
+                            <button type="button" id="download-btn" class="btn btn-success">下载音乐</button>
                         </div>
                         <div id="download-progress" class="mt-3 d-none">
                             <div class="progress">
