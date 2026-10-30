@@ -29,9 +29,9 @@
             grid-template-rows:auto auto; gap:14px; margin:0!important; padding:0 0 22px;
             min-height:0; border-bottom:1px solid #e3eeeb;
         }
-        .brand-left { grid-column:1; grid-row:1; display:flex; align-items:center; justify-self:center; gap:12px; min-width:0; }
+        .brand-left { grid-column:1; grid-row:1; display:flex; align-items:center; justify-self:center; gap:22px; min-width:0; }
         .brand-logo-frame {
-            flex:0 0 auto; width:164px; overflow:hidden; border-radius:0;
+            flex:0 0 auto; width:190px; overflow:hidden; border-radius:0;
             background:transparent; border:0; box-shadow:none;
         }
         .brand-logo { display:block; width:100%; height:auto; mix-blend-mode:multiply; }
@@ -43,10 +43,12 @@
         }
         .brand-tag {
             display:inline-flex; align-items:center; padding:0; border:0;
-            border-radius:0; color:#33877b; background:transparent;
-            font-size:12px; font-weight:600; letter-spacing:.01em;
+            border-radius:0; color:#67cabb; background:transparent;
+            font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+            font-size:28px; font-weight:400; line-height:1.2; letter-spacing:0;
             white-space:nowrap;
         }
+        .brand-tag:before { content:none; }
         .brand-tag:before { content:none; }
         .brand-subtitle { margin:0!important; color:var(--muted); font-size:16px; line-height:1.6; text-align:center; }
         body > .container > .card { min-width:0; margin:0!important; border:1px solid #e8f0ed; border-radius:16px; background:var(--paper); box-shadow:0 8px 24px #1c66560a!important; overflow:hidden; }
