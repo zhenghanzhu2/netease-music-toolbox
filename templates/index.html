@@ -126,6 +126,27 @@
             .brand-tag { font-size:11px; }
         }
     </style>
+    <style>
+        body > .container { margin:0 auto!important; padding:30px 28px 28px; }
+        .brand-logo-frame { width:190px; }
+        .brand-copy h1 { font-size:38px; }
+        body > .container > .card.mt-3 > .card-body { min-height:0; padding:28px 24px; }
+        .card.shadow-sm > .card-body { min-height:0; padding:30px 38px; display:flex; align-items:center; justify-content:center; }
+        #main-form { width:100%; max-width:640px; }
+        #search-area { display:block; }
+        #search-area .text-center { text-align:center!important; }
+        @media(max-width:760px) {
+            body > .container { padding:22px 18px 26px; }
+            .brand-logo-frame { width:min(180px,64vw); }
+            .brand-copy h1 { font-size:clamp(24px,5.6vw,30px); }
+            .card.shadow-sm > .card-body { min-height:0; padding:22px 20px; display:block; }
+            body > .container > .card.mt-3 > .card-body { min-height:0; padding:24px 20px; }
+        }
+        @media(max-width:420px) {
+            body > .container { padding-left:13px; padding-right:13px; }
+            .brand-copy h1 { font-size:22px; }
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
@@ -322,7 +343,7 @@
     </div>
     <footer class="footer mt-5 py-3 bg-light border-top">
         <div class="container text-center text-muted small">
-            <span>网易云音乐工具箱 &copy; 2025 | Powered by Suxiaoqingx &amp; Bootstrap | <a href="https://github.com/Suxiaoqinx/Netease_url" target="_blank">GitHub</a></span>
+            <span>网易云音乐工具箱 &copy; 2025&nbsp;·&nbsp;轻松频率内部专用&nbsp;·&nbsp;仓库：<a href="https://github.com/zhenghanzhu2/netease-music-toolbox" target="_blank" rel="noopener">zhenghanzhu2/netease-music-toolbox</a></span>
         </div>
     </footer>
     <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
