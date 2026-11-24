@@ -49,11 +49,19 @@ body {
     font-size: 12px;
 }
 
-.brand img {
+.brand-mark {
+    /* Trim the source PNG's baked-in margins at its 130px display width. */
+    width: 85px;
+    height: 28px;
+    overflow: hidden;
+    mix-blend-mode: multiply;
+}
+
+.brand-mark img {
     display: block;
     width: 130px;
     height: auto;
-    mix-blend-mode: multiply;
+    margin: -2px 0 0 -22px;
 }
 
 .brand span { border-inline-start: 1px solid #b4a9c2; padding-inline-start: 14px; }
@@ -65,6 +73,7 @@ body {
     font-size: clamp(32px, 5vw, 57px);
     line-height: 1.22;
     letter-spacing: .018em;
+    text-indent: -.07em;
 }
 
 .masthead p { margin: 0; color: var(--muted); }
