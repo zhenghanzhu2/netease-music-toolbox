@@ -236,6 +236,9 @@ body:has(.guide[open]) { overflow: hidden; }
 #main-form .btn { min-width: 128px; min-height: 46px; }
 .form-message { margin: 12px 0 0; color: var(--plum); font-size: 14px; }
 .form-message:empty { margin: 0; }
+.link-choices:not([hidden]) { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+#main-form .link-choices .btn { min-width: 0; min-height: 44px; }
+.link-choices a { padding: 8px; font-size: 14px; }
 
 .account-panel {
     position: relative;
@@ -292,6 +295,22 @@ body:has(.guide[open]) { overflow: hidden; }
 .track-title { display: block; }
 .track-meta { display: block; color: var(--muted); font-size: 13px; }
 .track-actions { display: flex; gap: 7px; }
+.track-actions button[aria-expanded="true"] { background: var(--lavender); border-color: var(--plum); color: var(--plum); }
+.track-panel {
+    grid-column: 1 / -1;
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--canvas);
+}
+.track-panel-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.track-panel-header h3 { margin: 0; font-size: 17px; font-weight: 750; overflow-wrap: anywhere; }
+.track-panel-header .btn { flex: none; }
+.track-panel .lyric-box { background: var(--paper); }
+.track-download-form { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin-top: 12px; }
+.track-download-form > div { flex: 0 1 220px; }
+.track-download-form > .btn { min-height: 48px; }
 
 .track-detail .badge { background: var(--lavender) !important; color: var(--plum) !important; }
 .lyric-box {
