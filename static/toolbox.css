@@ -87,15 +87,91 @@ body {
     border: 1px solid var(--line);
 }
 
-.tool-modes {
+.tool-toolbar {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    min-width: 0;
+    align-items: center;
+    gap: 4px 12px;
     margin: 0 0 28px;
     padding: 0 0 15px;
     border-bottom: 1px solid var(--line);
 }
+
+.tool-modes {
+    display: flex;
+    flex: 1 1 390px;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.guide-link,
+.guide-close {
+    min-height: 44px;
+    padding: 6px 10px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: var(--plum);
+    background: transparent;
+    font-size: 14px;
+    font-weight: 650;
+}
+
+.guide-link { text-decoration: underline; text-underline-offset: 4px; }
+.guide-link:hover, .guide-close:hover { background: var(--lavender); }
+.guide-close { border-color: var(--line); }
+
+body:has(.guide[open]) { overflow: hidden; }
+
+.guide {
+    width: min(650px, calc(100% - 24px));
+    max-height: min(740px, calc(100dvh - 24px));
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    color: var(--ink);
+    background: var(--paper);
+    box-shadow: 0 16px 70px #29233845;
+}
+
+.guide[open] { display: flex; flex-direction: column; }
+.guide::backdrop { background: #29233880; }
+.guide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px clamp(16px, 4vw, 28px);
+    border-bottom: 1px solid var(--line);
+}
+
+.guide-header h2 { margin: 0; font: 800 26px "Songti SC", "Noto Serif CJK SC", "SimSun", serif; }
+.guide-body {
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding: 20px clamp(16px, 4vw, 28px) 26px;
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.guide-body:focus-visible { outline: 2px solid #8a569e; outline-offset: -3px; }
+.guide-body h3 { margin: 0 0 10px; font-size: 17px; font-weight: 750; }
+.guide-body p { margin: 0; }
+.guide-body p + p { margin-top: 8px; }
+.guide-body section + section { margin-top: 23px; padding-top: 18px; border-top: 1px solid var(--line); }
+.guide-tools {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 10px 16px;
+    margin-bottom: 15px;
+}
+.guide-tools dd { margin: 0; }
+.guide-note { padding: 12px; border-radius: 8px; background: var(--canvas); }
+.guide-note code { color: var(--plum); }
 
 .tool-modes label { position: relative; cursor: pointer; }
 
@@ -247,13 +323,15 @@ body {
     .masthead { padding-bottom: 7px; }
     .masthead h1 { margin-top: 22px; }
     .workbench { padding: 18px; }
-    .tool-modes { margin-bottom: 20px; }
+    .tool-toolbar { margin-bottom: 20px; }
     .account-panel { min-height: 170px; }
     .record { right: -87px; top: -115px; }
     .results { grid-row: 3; }
 }
 
 @media (max-width: 400px) {
+    .guide-tools { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    .guide-tools dt:not(:first-child) { margin-top: 9px; }
     #search-area { grid-template-columns: minmax(0, 1fr) 84px; }
     .tool-modes span { padding-inline: 8px; }
     .track-row { grid-template-columns: 1fr; }

@@ -20,14 +20,17 @@
         </header>
         <section class="workbench" aria-label="音乐工具">
                 <form id="main-form">
-                    <fieldset class="tool-modes">
-                        <legend class="visually-hidden">选择音乐工具</legend>
-                        <label><input type="radio" name="tool-mode" value="search" checked><span>歌曲搜索</span></label>
-                        <label><input type="radio" name="tool-mode" value="parse"><span>单曲解析</span></label>
-                        <label><input type="radio" name="tool-mode" value="playlist"><span>歌单解析</span></label>
-                        <label><input type="radio" name="tool-mode" value="album"><span>专辑解析</span></label>
-                        <label><input type="radio" name="tool-mode" value="download"><span>音乐下载</span></label>
-                    </fieldset>
+                    <div class="tool-toolbar">
+                        <fieldset class="tool-modes">
+                            <legend class="visually-hidden">选择音乐工具</legend>
+                            <label><input type="radio" name="tool-mode" value="search" checked><span>歌曲搜索</span></label>
+                            <label><input type="radio" name="tool-mode" value="parse"><span>单曲解析</span></label>
+                            <label><input type="radio" name="tool-mode" value="playlist"><span>歌单解析</span></label>
+                            <label><input type="radio" name="tool-mode" value="album"><span>专辑解析</span></label>
+                            <label><input type="radio" name="tool-mode" value="download"><span>音乐下载</span></label>
+                        </fieldset>
+                        <button class="guide-link" id="guide-open" type="button" aria-haspopup="dialog" aria-controls="tool-guide">使用说明</button>
+                    </div>
                     <div id="search-area">
                         <div class="mb-3">
                             <label for="search_keywords" class="form-label">搜索关键词</label>
@@ -186,6 +189,41 @@
             <ul class="list-group mt-3" id="album-tracks"></ul>
         </div>
     </main>
+    <dialog class="guide" id="tool-guide" aria-labelledby="guide-title">
+        <header class="guide-header">
+            <h2 id="guide-title">使用说明</h2>
+            <form method="dialog">
+                <button type="submit" class="guide-close" autofocus>关闭</button>
+            </form>
+        </header>
+        <div class="guide-body" tabindex="0" role="region" aria-label="使用说明正文">
+            <section aria-labelledby="guide-tools">
+                <h3 id="guide-tools">选哪个工具？</h3>
+                <dl class="guide-tools">
+                    <dt>歌曲搜索</dt>
+                    <dd>输入歌名或歌手。默认返回 10 条，可设为 1–50 条。点结果里的「解析」或「下载」，自动带入歌曲 ID。</dd>
+                    <dt>单曲解析</dt>
+                    <dd>粘贴单曲链接或歌曲 ID，再选音质。可查看歌曲信息、封面和歌词，有可用音源时可试听或打开下载链接。</dd>
+                    <dt>歌单解析</dt>
+                    <dd>粘贴歌单链接或歌单 ID。打开曲目列表后，可逐首解析或下载。</dd>
+                    <dt>专辑解析</dt>
+                    <dd>粘贴专辑链接或专辑 ID。打开曲目列表后，可逐首解析或下载。</dd>
+                    <dt>音乐下载</dt>
+                    <dd>粘贴单曲链接或歌曲 ID，选择音质后点击「下载音乐」。默认选择无损，完成后可在浏览器下载记录里找文件。</dd>
+                </dl>
+                <p class="guide-note">从分享文案里只复制网址。单曲、歌单和专辑链接通常分别包含 <code>/song</code>、<code>/playlist</code>、<code>/album</code>。短链接解析失败时，先在浏览器打开，再复制完整网址或其中的数字 ID。</p>
+            </section>
+            <section aria-labelledby="guide-login">
+                <h3 id="guide-login">什么时候需要扫码？</h3>
+                <p>网站访问账号由管理员提供。需要网易云账号权限时，在工具区旁点击「扫码登录」，用网易云音乐手机 App 扫码并在手机上确认。二维码过期后可重新生成。</p>
+                <p>扫码授权由工具箱服务共用，请使用团队指定的网易云账号。</p>
+            </section>
+            <section aria-labelledby="guide-playback">
+                <h3 id="guide-playback">有歌词，为什么播不了？</h3>
+                <p>歌曲资料和音源分别获取。音质和下载权限取决于歌曲、版权和账号。确认扫码成功后，可以改选标准音质再试。下载时请等文件处理完成，再查看浏览器的下载记录。</p>
+            </section>
+        </div>
+    </dialog>
     <!-- Modal for big picture -->
     <div class="modal fade" id="bigPicModal" tabindex="-1" aria-labelledby="bigPicModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -208,6 +246,14 @@
     <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
     <script src="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script>
+        const toolGuide = document.getElementById('tool-guide');
+        const guideButton = document.getElementById('guide-open');
+        guideButton.addEventListener('click', () => {
+            toolGuide.showModal();
+            toolGuide.querySelector('.guide-body').scrollTop = 0;
+        });
+        toolGuide.addEventListener('close', () => guideButton.focus());
+
         $(document).ready(function() {
             let loginTimer;
             let player;
